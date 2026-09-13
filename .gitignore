@@ -1,0 +1,11 @@
+node_modules/
+.env
+dist/
+build/
+*.sqlite
+*.sqlite3
+*.db
+*.db-journal
+*.log
+.DS_Store
+.vscode/

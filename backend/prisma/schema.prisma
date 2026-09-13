@@ -1,0 +1,22 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "sqlite"
+  url      = env("DATABASE_URL")
+}
+
+// A saved wishlist movie. We store a snapshot of the fields the wishlist UI
+// needs (title, poster, year, rating) so the list renders without calling
+// TMDB again for every item. externalMovieId is the TMDB id and is unique,
+// which prevents duplicate entries at the database level.
+model WishlistMovie {
+  id              Int      @id @default(autoincrement())
+  externalMovieId Int      @unique
+  title           String
+  posterUrl       String?
+  releaseDate     String?
+  rating          Float?
+  createdAt       DateTime @default(now())
+}
